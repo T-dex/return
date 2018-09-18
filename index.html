@@ -56,6 +56,8 @@ function labelChoice(e){
 function newReturn(e){
     let input = document.querySelector("input#number")
     orderNum=input.value;
+    console.log(orderNum);
+    
       axios.post('/api/form',{
           orderNum,
           label
