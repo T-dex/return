@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Returns</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <form>
+    <select class="shit">
+    <option value=" " disabled selected>
+            Select return label
+    </option>
+    <option value="Free">
+        Return Free Label
+    </option>
+    <option value="$6.99">
+        Return $6.99 label
+    </option>
+    <option value="Exchange">
+        Exchange
+    </option>
+  
+</select>
+</form>
+<input type="text" id="number"/>
+<button id="find"> Create Return document</button>
+<p></p>
+</body>
+<script>
+
+// let label=''
+// let orderNum=''
+
+
+
+let btn=document.querySelector("button#find") 
+btn.addEventListener("click", (e)=>{ 
+   newReturn(e)
+    return
+})
+let dropdown= document.querySelector("select.shit")
+dropdown.addEventListener("change", (e)=>{
+    labelChoice(e)
+    return
+})
+
+function labelChoice(e){
+  label=e.target.value
+  return 
+}
+function newReturn(e){
+    let input = document.querySelector("input#number")
+    orderNum=input.value;
+      axios.post('/api/form',{
+          orderNum,
+          label
+      })
+    }
+
+
+
+</script>
+</html>
