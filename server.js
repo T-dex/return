@@ -19,10 +19,34 @@ app.get('/', (res, req)=>{
 app.post('/api/form', (res, req)=>{
     webAdd=res.body.orderNum;
     console.log(webAdd);
-   
+    // nightmare.goto(`https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`)
+    // .wait(4000)
+    // .evaluate(function(){
+    //     var orderNumber =[]
+    //     $('input[name=order]').each(function(){
+    //       item={}
+    //       item["product"]=$(this).text()
+    //       item["link"]=$(this).attr("href")
+    //       orderNumber.push(item)
+    //     })
+    //     return orderNumber
+    //   })
+    //   .end()
+    //   .then(function(result){
+    //     for(orderNum in result){
+    //       updatedSku.push(result[orderNum].link);
+    //     }
+    //     // newRun(updatedSku)
+    //     console.log(updatedSku);
+    //     app.post('/api/form',(res, req)=>{
+    //         newOrder=req.body.orderNumber
+    //     })
+    //     return updatedSku
+    console.log(`https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`)
+
+})
 
 
-console.log(`https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`)
 
 app.listen(port,()=>{
     console.log(`listening on port ${port}`); 
