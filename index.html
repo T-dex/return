@@ -136,7 +136,7 @@ function newReturn(e){
 
     function copyToClipboard(doc){
         const el= document.createElement('textarea');
-        el.value=doc
+        el.value=doc.replace(/<(?:.|\n)*?>/gm, '');
         document.body.appendChild(el)
         el.select();
         document.execCommand('copy');
