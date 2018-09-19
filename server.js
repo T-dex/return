@@ -3,7 +3,7 @@ const path = require('path')
 const bodyParser= require('body-parser')
 const jquery= require('jquery')
 const Nightmare=require('nightmare')
-nightmare=Nightmare()
+nightmare= new Nightmare({show:true})
 
 
 let webAdd=''
@@ -42,8 +42,9 @@ app.post('/api/form', (res, req)=>{
     //         newOrder=req.body.orderNumber
     //     })
     //     return updatedSku
-    console.log(`https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`)
+    const newAddy=`https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`
 
+  
 })
 
 
