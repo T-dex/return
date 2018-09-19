@@ -32,7 +32,7 @@
 <p>Test</p>
 </body>
 <script>
-
+let user=prompt("Please enter your name and inital")
 let label=''
 let rmaNum=''
 let custName=''
@@ -60,7 +60,7 @@ function newReturn(e){
     let name= document.querySelector("input#name")
     rmaNum=input.value;
     custName=name.value
-    console.log(label);
+    console.log(user);
     if(label==='Free'){
         textArea.innerHTML=`
         Hi ${custName},
@@ -75,7 +75,7 @@ function newReturn(e){
                 <br/>
                 Thanks much,
                 <br/>
-                Dex M<br/>
+                ${user}<br/>
                 Backcountry Gearhead<br/>
                 <br/>
                 <br/>
@@ -96,7 +96,7 @@ function newReturn(e){
                 <br/>
                 Thanks much,
                 <br/>
-                Dex M<br/>
+                ${user}<br/>
                 Backcountry Gearhead<br/>
                 <br/>
                 <br/>
@@ -120,14 +120,13 @@ function newReturn(e){
                 <br/>
                 Thanks much,
                 <br/>
-                Dex M<br/>
+                ${user}<br/>
                 Backcountry Gearhead<br/>
                 <br/>
                 <br/>
                 Backcountry.com<br/>
                 (800) 409-4502<br/>
                 "We Use the Gear We Sell"<br/>
-
         `
     }
     }
