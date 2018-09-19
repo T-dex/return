@@ -36,6 +36,7 @@ let user=prompt("Please enter your name and inital")
 let label=''
 let rmaNum=''
 let custName=''
+let doc=``
 const textArea= document.querySelector("p")
 
 
@@ -62,7 +63,7 @@ function newReturn(e){
     custName=name.value
     console.log(user);
     if(label==='Free'){
-        textArea.innerHTML=`
+        doc=`
         Hi ${custName},
         <br/>
 
@@ -84,7 +85,7 @@ function newReturn(e){
                 "We Use the Gear We Sell"<br/>
                 `
     }else if(label==='$6.99'){
-        textArea.innerHTML=`
+        doc=`
         Hi ${custName},
         <br/>
 
@@ -107,7 +108,7 @@ function newReturn(e){
         `
 
     }else if(label==='Exchange'){
-        textArea.innerHTML=`
+        doc=`
         Hi ${custName},
         <br/>
 
@@ -129,6 +130,17 @@ function newReturn(e){
                 "We Use the Gear We Sell"<br/>
         `
     }
+    textArea.innerHTML=doc
+    copyToClipboard(doc)
+    }
+
+    function copyToClipboard(doc){
+        const el= document.createElement('textarea');
+        el.value=doc
+        document.body.appendChild(el)
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el)
     }
 
 
