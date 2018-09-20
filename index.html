@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,146 +9,157 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
     <form>
-    <select class="shit">
-    <option value=" " disabled selected>
-            Select return label
-    </option>
-    <option value="Free">
-        Return Free Label
-    </option>
-    <option value="$6.99">
-        Return $6.99 label
-    </option>
-    <option value="Exchange">
-        Exchange
-    </option>
-  
-</select>
-</form>
-<input type="text" id="name" placeholder="Name"/>
-<input type="text" id="RMA" placeholder="RMA"/>
-<button id="find"> Create Return document</button>
-<p>Test</p>
+        <select class="shit">
+            <option value=" " disabled selected>
+                Select return label
+            </option>
+            <option value="Free">
+                Return Free Label
+            </option>
+            <option value="$6.99">
+                Return $6.99 label
+            </option>
+            <option value="Exchange">
+                Exchange
+            </option>
+
+        </select>
+    </form>
+    <input type="text" id="name" placeholder="Name" />
+    <input type="text" id="RMA" placeholder="RMA" />
+    <button id="find"> Create Return document</button>
+    <p>Test</p>
 </body>
 <script>
-let user=prompt("Please enter your name and inital")
-let label=''
-let rmaNum=''
-let custName=''
-let doc=``
-const textArea= document.querySelector("p")
+    let user = prompt("Please enter your name and inital")
+    let label = ''
+    let rmaNum = ''
+    let custName = ''
+    let doc = ``
+    const textArea = document.querySelector("p")
 
 
 
-let btn=document.querySelector("button#find") 
-btn.addEventListener("click", (e)=>{ 
-   newReturn(e)
-    return
-})
-let dropdown= document.querySelector("select.shit")
-dropdown.addEventListener("change", (e)=>{
-    labelChoice(e)
-    return
-})
+    let btn = document.querySelector("button#find")
+    btn.addEventListener("click", (e) => {
+        newReturn(e)
+        return
+    })
+    let dropdown = document.querySelector("select.shit")
+    dropdown.addEventListener("change", (e) => {
+        labelChoice(e)
+        return
+    })
 
-function labelChoice(e){
-  label=e.target.value
-  return 
-}
-function newReturn(e){
-    let input = document.querySelector("input#RMA")
-    let name= document.querySelector("input#name")
-    rmaNum=input.value;
-    custName=name.value
-    console.log(user);
-    if(label==='Free'){
-        doc=`
-        Hi ${custName},
-        <br/>
+    function labelChoice(e) {
+        label = e.target.value
+        return
+    }
 
-                Thanks for your order with Backcountry.com. We’ve created a service ticket that will track our correspondence with you. That way we can give you and your order all the attention you need, and do so with downright dazzling efficiency.
-                <br/>
-                Here is the return number you will need to include on the outside of the package. RMA # ${rmaNum}
-                I have also attached a Free return shipping label to this email. 
-                Just print out the label and attach it to your return. Then drop off your package at your local UPS store. If it works better for you, you may definitely choose another method of shipping. Just make sure you snag a tracking number with them when you ship it out.<br/>
-                For further assistance or information, simply reply to this message, chat live with us, or give us a ring at 800-409-4502 day or night.
-                <br/>
-                Thanks much,
-                <br/>
-                ${user}<br/>
-                Backcountry Gearhead<br/>
-                <br/>
-                <br/>
-                Backcountry.com<br/>
-                (800) 409-4502<br/>
-                "We Use the Gear We Sell"<br/>
+    function newReturn(e) {
+        let input = document.querySelector("input#RMA")
+        let name = document.querySelector("input#name")
+        rmaNum = input.value;
+        custName = name.value
+        console.log(user);
+        if (label === 'Free') {
+            doc =
                 `
-    }else if(label==='$6.99'){
-        doc=`
         Hi ${custName},
         <br/>
 
-                Thanks for your order with Backcountry.com. We’ve created a service ticket that will track our correspondence with you. That way we can give you and your order all the attention you need, and do so with downright dazzling efficiency.
-                <br/>
-                Here is the return number you will need to include on the outside of the package. RMA # ${rmaNum}
-                I have also attached a discounted return shipping label to this email. This label is only $6.99 and will be deducted from the refund. Just print out the label and attach it to your return. Then drop off your package at your local UPS store. If it works better for you, you may definitely choose another method of shipping. Just make sure you snag a tracking number with them when you ship it out.<br/>
-                For further assistance or information, simply reply to this message, chat live with us, or give us a ring at 800-409-4502 day or night.
-                <br/>
-                Thanks much,
-                <br/>
-                ${user}<br/>
-                Backcountry Gearhead<br/>
-                <br/>
-                <br/>
-                Backcountry.com<br/>
-                (800) 409-4502<br/>
-                "We Use the Gear We Sell"<br/>
-        
+        Thanks for your order with Backcountry.com.<br/> 
+        We’ve created a service ticket that will track our correspondence with you.<br/>
+        That way we can give you and your order all the attention you need, and do so with downright dazzling efficiency.
+        <br/>
+        Here is the return number you will need to include on the outside of the package. RMA # ${rmaNum}
+        I have also attached a Free return shipping label to this email. <br/>
+        Just print out the label and attach it to your return. Then drop off your package at your local UPS store.<br/>
+        If it works better for you, you may definitely choose another method of shipping.<br/>
+        Just make sure you snag a tracking number with them when you ship it out.<br/>
+        For further assistance or information, simply reply to this message, chat live with us,<br/>
+        or give us a ring at 800-409-4502 day or night.
+        <br/>
+        Thanks much,
+        <br/>
+        ${user}<br/>
+        Backcountry Gearhead<br/>
+        <br/>
+        <br/>
+        Backcountry.com<br/>
+        (800) 409-4502<br/>
+        "We Use the Gear We Sell"<br/>
+                `
+        } else if (label === '$6.99') {
+            doc =
+                `
+        Hi ${custName},
+        Thanks for your order with Backcountry.com.<br/>
+        We’ve created a service ticket that will track our correspondence with you.<br/>
+        That way we can give you and your order all the attention you need, and do so with downright dazzling efficiency.
+        <br/>
+        Here is the return number you will need to include on the outside of the package. RMA # ${rmaNum}<br/>
+        I have also attached a discounted return shipping label to this email.<br/>
+        This label is only $6.99 and will be deducted from the refund.<br/>
+        Just print out the label and attach it to your return. Then drop off your package at your local UPS store.<br/>
+        If it works better for you, you may definitely choose another method of shipping.<br/> 
+        Just make sure you snag a tracking number with them when you ship it out.<br/>
+        For further assistance or information, simply reply to this message, chat live with us,<br/>
+        or give us a ring at 800-409-4502 day or night.
+        <br/>
+        Thanks much,
+        ${user}<br/>
+        Backcountry Gearhead<br/>
+        <br/>
+        <br/>
+        Backcountry.com<br/>
+        (800) 409-4502<br/>
+        "We Use the Gear We Sell"<br/>
+
         `
 
-    }else if(label==='Exchange'){
-        doc=`
+        } else if (label === 'Exchange') {
+            doc =
+                `
         Hi ${custName},
         <br/>
-
-         Thanks for your order with Backcountry.com. We’ve created a service ticket that will track our correspondence with you. That way we can give you and your order all the attention you need, and do so with downright dazzling efficiency.
+        Thanks for your order with Backcountry.com.<br/>
+         We’ve created a service ticket that will track our correspondence with you.<br/>
+        That way we can give you and your order all the attention you need, and do so with downright dazzling efficiency.
         <br/>
-        
-        Your Return Merchandising Authorization (RMA)# is ${rmaNum}. Please write that number on the outside of the return package as well as on the sales receipt or slip of paper that you can put in with the item. 
+        Your Return Merchandising Authorization (RMA)# is ${rmaNum}.<br/>
+        Please write that number on the outside of the return package as well as on the sales receipt<br/>
+        or slip of paper that you can put in with the item. <br/>
         You will receive an email that your order was returned and your new order will ship out.<br/>
-        For further assistance or information, simply reply to this message, chat live with us, or give us a ring at 800-409-4502 day or night.
-                <br/>
-                Thanks much,
-                <br/>
-                ${user}<br/>
-                Backcountry Gearhead<br/>
-                <br/>
-                <br/>
-                Backcountry.com<br/>
-                (800) 409-4502<br/>
-                "We Use the Gear We Sell"<br/>
+        For further assistance or information, simply reply to this message, chat live with us, <br/>
+        or give us a ring at 800-409-4502 day or night.
+        <br/>
+        Thanks much,
+        <br/>
+        ${user}<br/>
+        Backcountry Gearhead<br/>
+        <br/>
+        <br/>
+        Backcountry.com<br/>
+        (800) 409-4502<br/>
+        "We Use the Gear We Sell"
         `
-    }
-    textArea.innerHTML=doc
-    copyToClipboard(doc)
+        }
+        textArea.innerHTML = doc
+        copyToClipboard(doc)
     }
 
-    function copyToClipboard(doc){
-        const el= document.createElement('textarea');
-        el.value=doc.replace(/<(?:.|\n)*?>/gm, '');
+    function copyToClipboard(doc) {
+        const el = document.createElement('textarea');
+        el.value = doc.replace(/<(?:.|\n)*?>/gm, '');
         document.body.appendChild(el)
         el.select();
         document.execCommand('copy');
         document.body.removeChild(el)
     }
-
-
-
-
-
-
-
 </script>
+
 </html>

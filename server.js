@@ -1,23 +1,28 @@
-const express= require('express')
+const express = require('express')
 const path = require('path')
-const bodyParser= require('body-parser')
-const jquery= require('jquery')
-const Nightmare=require('nightmare')
-nightmare= new Nightmare({show:true})
-
-
-let webAdd=''
-const app=express()
-const port =process.env.PORT || 3000
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get('/', (res, req)=>{
-    req.sendFile(path.join(__dirname+'/index.html'));
+const bodyParser = require('body-parser')
+const jquery = require('jquery')
+const Nightmare = require('nightmare')
+nightmare = new Nightmare({
+    show: true
 })
 
-app.post('/api/form', (res, req)=>{
-    webAdd=res.body.orderNum;
+
+let webAdd = ''
+const app = express()
+const port = process.env.PORT || 3000
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+app.get('/', (res, req) => {
+    console.log(req);
+    req.sendFile(path.join(__dirname + '/index.html'));
+})
+
+app.post('/api/form', (res, req) => {
+    webAdd = res.body.orderNum;
     console.log(webAdd);
     // nightmare.goto(`https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`)
     // .wait(4000)
@@ -42,13 +47,13 @@ app.post('/api/form', (res, req)=>{
     //         newOrder=req.body.orderNumber
     //     })
     //     return updatedSku
-    const newAddy=`https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`
+    const newAddy = `https://manager.backcountry/manager/admin/order_view.html?order=${webAdd}`
 
-  
+
 })
 
 
 
-app.listen(port,()=>{
-    console.log(`listening on port ${port}`); 
+app.listen(port, () => {
+    console.log(`listening on port ${port}`);
 })
