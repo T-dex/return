@@ -44,6 +44,9 @@
 </body>
 <script>
     let user = prompt("Please enter your name and inital")
+    if(user===null||user===''){
+        user = prompt("Please enter your name and inital")
+    }
     let label = ''
     let rmaNum = ''
     let custName = ''
@@ -68,7 +71,9 @@
         return
     }
 
-    function newReturn(e) {
+    function newReturn(e) {    
+        do {user = prompt("Please enter your name and inital")}
+        while(user===null||user==='')
         let input = document.querySelector("input#RMA")
         let name = document.querySelector("input#name")
         rmaNum = input.value;
